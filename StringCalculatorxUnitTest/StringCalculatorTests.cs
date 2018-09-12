@@ -33,7 +33,13 @@ namespace StringCalculatorxUnitTest
         [Fact]
         public void Add_Method_To_Return_Sum_New_Lines_Between_Numbers()
         {
-            "1\n2\n3".StringAddTpNumbers(6);
+            "1\n2,3".StringAddTpNumbers(6);
+        }
+
+        [Fact]
+        public void To_Return_Exception_If_Two_Consective_Delimiters()
+        {
+            Assert.Throws<ArgumentException>(() => "1,\n2".StringAddTpNumbers(-1));
         }
     }
 
