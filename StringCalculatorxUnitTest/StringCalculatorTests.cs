@@ -31,13 +31,19 @@ namespace StringCalculatorxUnitTest
         }
 
         [Fact]
-        public void Add_Method_To_Return_Sum_New_Lines_Between_Numbers()
+        public void AddMethodToReturnSumNewLinesBetweenNumbers()
         {
             "1\n2,3".StringAddTpNumbers(6);
         }
 
         [Fact]
-        public void To_Return_Exception_If_Two_Consective_Delimiters()
+        public void ToReturnExceptionIfTwoConsectiveDelimiters()
+        {
+            Assert.Throws<ArgumentException>(() => new Calculator().Add(",\n"));
+        }
+
+        [Fact]
+        public void ToReturnSumOfStringsWhenCustomDelimiters()
         {
             Assert.Throws<ArgumentException>(() => new Calculator().Add(",\n"));
         }
