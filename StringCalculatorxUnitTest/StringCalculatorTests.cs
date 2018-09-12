@@ -13,7 +13,7 @@ namespace StringCalculatorxUnitTest
 
             var expectedVal = 0;
 
-            Assert.Equal( expectedVal, Calculator.Add(String.Empty));
+            Assert.Equal( expectedVal, val.Add(String.Empty));
         }
     }
 }
