@@ -9,6 +9,8 @@ namespace StringCalculator
         {
             if( string.IsNullOrEmpty(numbr))
                 return 0;
+            if (numbr.Contains(","))
+                return int.Parse(numbr[0].ToString())+ int.Parse(numbr[2].ToString());
             return int.Parse(numbr);
         }
     }
