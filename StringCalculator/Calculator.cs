@@ -7,7 +7,9 @@ namespace StringCalculator
     {
         public int Add(string numbr)
         {
-            return 0;
+            if( string.IsNullOrEmpty(numbr))
+                return 0;
+            return int.Parse(numbr);
         }
     }
 }
