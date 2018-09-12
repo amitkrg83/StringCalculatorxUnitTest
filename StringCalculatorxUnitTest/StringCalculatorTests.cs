@@ -45,7 +45,7 @@ namespace StringCalculatorxUnitTest
         [Fact]
         public void ToReturnSumOfStringsWhenCustomDelimiters()
         {
-            "//[***]\n1***2***3".StringAddTpNumbers(6);
+            "//;\n1;2".StringAddTpNumbers(3);
         }
     }
 

@@ -8,14 +8,23 @@ namespace StringCalculator
     {
         public int Add(string numbr)
         {
+
+
+            var delimeters = ",\n";
+
             if (string.IsNullOrEmpty(numbr))
                 return 0;
 
-            var delimeters = numbr.Split(',', '\n');
+            if (numbr.Contains("//"))
+            {
+                delimeters += numbr[2];
+                numbr = numbr.Substring(4, numbr.Length -4 );
+            }
+            var delimetersArr = numbr.Split(delimeters.ToCharArray());
 
-            if (delimeters.Any(x => string.IsNullOrEmpty(x)))
+            if (delimetersArr.Any(x => string.IsNullOrEmpty(x)))
                 throw new ArgumentException();
-            return numbr.Split(',', '\n').Select(x => int.Parse(x)).Sum();
+            return delimetersArr.Select(x => int.Parse(x)).Sum();
 
         }
     }
