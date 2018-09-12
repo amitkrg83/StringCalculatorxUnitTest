@@ -21,19 +21,29 @@ namespace StringCalculatorxUnitTest
         {
             var val = new Calculator();
 
-            var expectedVal = 100;
+            var expectedVal = 1;
 
-            Assert.Equal(expectedVal, val.Add("100"));
+            Assert.Equal(expectedVal, val.Add("1"));
         }
 
         [Fact]
-        public void ReturnSumOfNumbersOnSupplyingNumbers()
+        public void ReturnSumOfTwoNumbersOnSupplyingTwoNumbers()
         {
             var val = new Calculator();
 
             var expectedVal = 12;
 
             Assert.Equal(expectedVal, val.Add("7,5"));
+        }
+
+        [Fact]
+        public void ReturnSumOfMultipleNumbersOnSupplyingMultipleNumbers()
+        {
+            var val = new Calculator();
+
+            var expectedVal = 120;
+
+            Assert.Equal(expectedVal, val.Add("40,30,50"));
         }
     }
 }
