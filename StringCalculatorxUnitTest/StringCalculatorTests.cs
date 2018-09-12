@@ -25,5 +25,15 @@ namespace StringCalculatorxUnitTest
 
             Assert.Equal(expectedVal, val.Add("100"));
         }
+
+        [Fact]
+        public void ReturnSumOfNumbersOnSupplyingNumbers()
+        {
+            var val = new Calculator();
+
+            var expectedVal = 12;
+
+            Assert.Equal(expectedVal, val.Add("7,5"));
+        }
     }
 }
