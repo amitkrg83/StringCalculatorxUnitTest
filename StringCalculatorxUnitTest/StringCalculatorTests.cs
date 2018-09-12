@@ -55,6 +55,12 @@ namespace StringCalculatorxUnitTest
 
             Assert.Contains("-1", error.Message);
         }
+
+        [Fact]
+        public void ReturnSumIgnoringNumberGreaterThan1000()
+        {
+            "1,1000".StringAddTpNumbers(1);
+        }
     }
 
     internal static class AddTestHelper
