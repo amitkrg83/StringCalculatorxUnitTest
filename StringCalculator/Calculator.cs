@@ -18,12 +18,24 @@ namespace StringCalculator
             if (numbr.Contains("//"))
             {
                 delimeters += numbr[2];
-                numbr = numbr.Substring(4, numbr.Length -4 );
+                numbr = numbr.Substring(4, numbr.Length - 4);
             }
             var delimetersArr = numbr.Split(delimeters.ToCharArray());
 
             if (delimetersArr.Any(x => string.IsNullOrEmpty(x)))
                 throw new ArgumentException();
+
+            var intNumbers = delimetersArr.Select(x => int.Parse(x));
+
+            var negativeIntNumbers = intNumbers.Where(x => x < 0);
+
+            if (negativeIntNumbers.Count() > 0)
+            {
+                var msg = "Negative Not Allowed: {0}";
+
+                throw new ArgumentOutOfRangeException(string.Format(msg, string.Join(",", negativeIntNumbers.Select(x => x.ToString()).ToArray())));
+            }
+
             return delimetersArr.Select(x => int.Parse(x)).Sum();
 
         }

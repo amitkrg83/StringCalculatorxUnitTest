@@ -47,6 +47,14 @@ namespace StringCalculatorxUnitTest
         {
             "//;\n1;2".StringAddTpNumbers(3);
         }
+
+        [Fact]
+        public void AddWithNegativeNumberThrowException()
+        {
+            var error = Assert.Throws<ArgumentOutOfRangeException>(() => new Calculator().Add("-1,2"));
+
+            Assert.Contains("-1", error.Message);
+        }
     }
 
     internal static class AddTestHelper
