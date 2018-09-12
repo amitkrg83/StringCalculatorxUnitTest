@@ -39,7 +39,7 @@ namespace StringCalculatorxUnitTest
         [Fact]
         public void To_Return_Exception_If_Two_Consective_Delimiters()
         {
-            Assert.Throws<ArgumentException>(() => "1,\n2".StringAddTpNumbers(-1));
+            Assert.Throws<ArgumentException>(() => new Calculator().Add(",\n"));
         }
     }
 
