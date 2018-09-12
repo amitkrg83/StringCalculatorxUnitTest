@@ -15,5 +15,15 @@ namespace StringCalculatorxUnitTest
 
             Assert.Equal( expectedVal, val.Add(String.Empty));
         }
+
+        [Fact]
+        public void ReturnNumberOnSingleNumber()
+        {
+            var val = new Calculator();
+
+            var expectedVal = 100;
+
+            Assert.Equal(expectedVal, val.Add("100"));
+        }
     }
 }
