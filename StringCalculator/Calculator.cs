@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StringCalculator
 {
@@ -10,7 +11,10 @@ namespace StringCalculator
             if( string.IsNullOrEmpty(numbr))
                 return 0;
             if (numbr.Contains(","))
-                return int.Parse(numbr[0].ToString())+ int.Parse(numbr[2].ToString());
+            {
+                return numbr.Split(',').Select(x => int.Parse(x)).Sum();
+            }
+                
             return int.Parse(numbr);
         }
     }
