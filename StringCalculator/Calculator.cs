@@ -7,7 +7,7 @@ namespace StringCalculator
     {
         public int Add(string numbr)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
