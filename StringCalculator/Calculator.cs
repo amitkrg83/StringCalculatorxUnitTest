@@ -38,6 +38,8 @@ namespace StringCalculator
 
             return delimetersArr.Select(x => int.Parse(x)).Sum();
 
+            //return delimetersArr.Where(x => int.Parse(x) <= 1000).Sum(x => int.Parse(x));
+
         }
     }
 }
