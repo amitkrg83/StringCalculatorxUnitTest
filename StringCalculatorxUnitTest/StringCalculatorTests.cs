@@ -39,7 +39,7 @@ namespace StringCalculatorxUnitTest
         [Fact]
         public void ToReturnExceptionIfTwoConsectiveDelimiters()
         {
-            Assert.Throws<ArgumentException>(() => new Calculator().Add(",\n"));
+            "1,\n2,3".StringAddTpNumbers(6);
         }
 
         [Fact]
@@ -66,6 +66,12 @@ namespace StringCalculatorxUnitTest
         public void DelimitersCanOfAnyLength()
         {
             "//[***]\n1***2***3".StringAddTpNumbers(6);
+        }
+
+        [Fact]
+        public void MultipleDelimiters()
+        {
+            "//[*][%]\n1*2%3".StringAddTpNumbers(6);
         }
     }
 
