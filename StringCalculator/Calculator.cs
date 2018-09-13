@@ -20,6 +20,7 @@ namespace StringCalculator
                 delimeters += numbr[2];
                 numbr = numbr.Substring(4, numbr.Length - 4);
             }
+
             var delimetersArr = numbr.Split(delimeters.ToCharArray());
 
             if (delimetersArr.Any(x => string.IsNullOrEmpty(x)))
@@ -36,9 +37,9 @@ namespace StringCalculator
                 throw new ArgumentOutOfRangeException(string.Format(msg, string.Join(",", negativeIntNumbers.Select(x => x.ToString()).ToArray())));
             }
 
-            return delimetersArr.Select(x => int.Parse(x)).Sum();
+            //return delimetersArr.Select(x => int.Parse(x)).Sum();
 
-            //return delimetersArr.Where(x => int.Parse(x) <= 1000).Sum(x => int.Parse(x));
+            return delimetersArr.Where(x => int.Parse(x) < 1000).Sum(x => int.Parse(x));
 
         }
     }
