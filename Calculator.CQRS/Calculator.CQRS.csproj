@@ -5,12 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
     <Folder Include="Commands\" />
-    <Folder Include="Domain\" />
     <Folder Include="EventHandlers\" />
     <Folder Include="Events\" />
+    <Folder Include="Messaging\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="NewFolder\" />
     <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WebApi.StructureMap" Version="1.0.22" />
   </ItemGroup>
 
 </Project>
