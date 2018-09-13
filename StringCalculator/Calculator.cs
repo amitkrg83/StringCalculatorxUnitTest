@@ -9,38 +9,55 @@ namespace StringCalculator
         public int Add(string numbr)
         {
 
+            //default delimiter
+            string delimeter = ",";
 
-            var delimeters = ",\n";
-
-            if (string.IsNullOrEmpty(numbr))
-                return 0;
-
-            if (numbr.Contains("//"))
+            //custom delimiter
+            if (numbr.StartsWith("//"))
             {
-                delimeters += numbr[2];
-                numbr = numbr.Substring(4, numbr.Length - 4);
+                numbr = numbr.Substring(2);
+                delimeter = GetDelimiterFromStringInput(numbr);
             }
 
-            var delimetersArr = numbr.Split(delimeters.ToCharArray());
 
-            if (delimetersArr.Any(x => string.IsNullOrEmpty(x)))
-                throw new ArgumentException();
+            //replace new lines with delimeter
+            numbr = numbr.Replace("\n", delimeter);
 
-            var intNumbers = delimetersArr.Select(x => int.Parse(x));
+            //construct array of numbers
+            var numbers = numbr.Split(delimeter.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
-            var negativeIntNumbers = intNumbers.Where(x => x < 0);
+            var sum = 0;
 
-            if (negativeIntNumbers.Count() > 0)
+            List<int> negatifs = new List<int>();
+
+            for (int i = 0; i < numbers.Length; i++)
             {
-                var msg = "Negative Not Allowed: {0}";
+                int number;
+                if (Int32.TryParse(numbers[i], out number))
+                {
+                    if (number < 0)
+                    {
+                        negatifs.Add(number);
+                    }
 
-                throw new ArgumentOutOfRangeException(string.Format(msg, string.Join(",", negativeIntNumbers.Select(x => x.ToString()).ToArray())));
+                    if (number < 1000) sum += number;
+                }
+            }
+            if (negatifs.Count > 0) throw new NegativeNumberException(negatifs);
+            return sum;
+
+        }
+
+        private string GetDelimiterFromStringInput(string numbr)
+        {
+            var delimiter = numbr.Split('\n')[0];
+
+            if (delimiter.StartsWith("["))
+            {
+                delimiter = delimiter.Substring(1, delimiter.Length - 2);
             }
 
-            //return delimetersArr.Select(x => int.Parse(x)).Sum();
-
-            return delimetersArr.Where(x => int.Parse(x) < 1000).Sum(x => int.Parse(x));
-
+            return delimiter;
         }
     }
 }

@@ -59,7 +59,13 @@ namespace StringCalculatorxUnitTest
         [Fact]
         public void ReturnSumIgnoringNumberGreaterThan1000()
         {
-            "2,1000".StringAddTpNumbers(2);
+            "2,1001".StringAddTpNumbers(2);
+        }
+
+        [Fact]
+        public void DelimitersCanOfAnyLength()
+        {
+            "//[***]\n1***2***3".StringAddTpNumbers(6);
         }
     }
 
