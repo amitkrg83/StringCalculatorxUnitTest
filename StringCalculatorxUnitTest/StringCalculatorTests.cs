@@ -51,7 +51,7 @@ namespace StringCalculatorxUnitTest
         [Fact]
         public void AddWithNegativeNumberThrowException()
         {
-            var error = Assert.Throws<ArgumentOutOfRangeException>(() => new Calculator().Add("-1,2"));
+            var error = Assert.Throws<NegativeNumberException>(() => new Calculator().Add("-1,2"));
 
             Assert.Contains("-1", error.Message);
         }

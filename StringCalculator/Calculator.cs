@@ -28,22 +28,25 @@ namespace StringCalculator
 
             var sum = 0;
 
-            List<int> negatifs = new List<int>();
+            List<int> negativeNumber = new List<int>();
 
             for (int i = 0; i < numbers.Length; i++)
             {
                 int number;
+
                 if (Int32.TryParse(numbers[i], out number))
                 {
                     if (number < 0)
                     {
-                        negatifs.Add(number);
+                        negativeNumber.Add(number);
                     }
 
                     if (number < 1000) sum += number;
                 }
             }
-            if (negatifs.Count > 0) throw new NegativeNumberException(negatifs);
+
+            if (negativeNumber.Count > 0) throw new NegativeNumberException(negativeNumber);
+
             return sum;
 
         }
